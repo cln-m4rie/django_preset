@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile-dev
     env_file:
       - .env
-    command: uwsgi --socket :3031 --module config.wsgi --py-autoreload 1 --logto /var/www/html/logs/app/app.log
+    command: uwsgi --ini /var/www/html/uwsgi.ini
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.development
     volumes:
