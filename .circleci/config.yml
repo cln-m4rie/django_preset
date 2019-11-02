@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: .
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - run:
+          name: run unit test
+          command: |
+            python manage.py migrate
+            python manage.py test
