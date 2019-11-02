@@ -23,6 +23,4 @@ ENV LC_ALL=ja_JP.UTF-8
 ENV LANG=ja_JP.UTF-8
 ENV LANGUAGE=ja_JP.UTF-8
 
-RUN python manage.py migrate
-
 ADD . /var/www/html/
