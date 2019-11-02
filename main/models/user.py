@@ -8,12 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    """ユーザーマネージャー."""
 
     use_in_migrations = True
 
     def _create_user(self, email, password, **extra_fields):
-        """メールアドレスでの登録を必須にする"""
         if not email:
             raise ValueError('The given email must be set')
         email = self.normalize_email(email)
@@ -24,13 +22,11 @@ class UserManager(BaseUserManager):
         return user
 
     def create_user(self, email, password=None, **extra_fields):
-        """is_staff(管理サイトにログインできるか)と、is_superuer(全ての権限)をFalseに"""
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
-        """スーパーユーザーは、is_staffとis_superuserをTrueに"""
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -43,8 +39,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """カスタムユーザーモデル."""
-
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
@@ -77,16 +71,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
 
     def get_full_name(self):
-        """Return the first_name plus the last_name, with a space in
-        between."""
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
     def get_short_name(self):
-        """Return the short name for the user."""
         return self.first_name
 
     def email_user(self, subject, message, from_email=None, **kwargs):
-        """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
