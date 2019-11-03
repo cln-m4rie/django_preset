@@ -133,28 +133,42 @@ AUTH_USER_MODEL = 'main.User'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
+    'formatters': {
+        'development': {
+            'format': '%(asctime)s [%(levelname)s] %(pathname)s:%(lineno)d %(message)s'
         },
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
+        'production': {
+            'format': '%(asctime)s [%(levelname)s] %(process)d %(thread)d '
+                      '%(pathname)s:%(lineno)d %(message)s'
         },
     },
     'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
+        'file': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'app', 'app.log'),
+            'formatter': os.environ.get('MODE', 'production'),
+            'when': 'D',  # 単位は日
+            'interval': 1,  # 一日おき
+            'backupCount': 7,  # 世代数
         },
     },
     'loggers': {
+        # Djangoの警告・エラー
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        # 実行SQL
         'django.db.backends': {
-            'handlers': ['console'],
+            'handlers': ['file'],
             'level': 'DEBUG',
+            'propagate': False,
         },
-        'console': {
-            'handlers': ['console'],
+        'main': {
+            'handlers': ['file'],
             'level': 'DEBUG',
-        },
+            'propagate': True,
+        }
     },
 }

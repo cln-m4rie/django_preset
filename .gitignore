@@ -3,3 +3,5 @@ db.sqlite3
 .idea/*
 *.pyc
 *.log
+/mysql/*
+*.log*

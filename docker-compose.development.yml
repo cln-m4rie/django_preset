@@ -18,10 +18,24 @@ services:
       dockerfile: Dockerfile-dev
     env_file:
       - .env
-    command: uwsgi --ini /var/www/html/uwsgi.ini
-    environment:
-      DJANGO_SETTINGS_MODULE: config.settings.development
+    command: sh -c "./wait-for-it.sh db:3306; uwsgi --ini /var/www/html/uwsgi.ini"
     volumes:
       - .:/var/www/html
     ports:
       - "3031:3031"
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=main
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - TZ="Asia/Tokyo"
