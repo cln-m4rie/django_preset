@@ -34,6 +34,13 @@ jobs:
             pipenv lock -r > requirements.txt
             pip install -r requirements.txt
       - run:
+          name: install dockerize
+          command: |
+            [ ! -f /usr/local/bin/dockerize ] && wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+            true
+          environment:
+            DOCKERIZE_VERSION: v0.6.1
+      - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
