@@ -8,7 +8,7 @@ jobs:
           DB_NAME: main
           DB_USER: user
           DB_PASSWORD: password
-          DB_HOST: db
+          DB_HOST: 127.0.0.1
           DB_PORT: 3306
       - image: circleci/mysql:5.7
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
