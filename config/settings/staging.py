@@ -2,10 +2,10 @@ import os
 
 from .base import *
 
-DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('PRODUCTION_HOST')]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('ADDITIONAL_HOST')]
 
 DATABASES = {
     'default': {
