@@ -13,7 +13,7 @@ jobs:
       - image: circleci/mysql:5.7
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
         environment:
-          MYSQL_DATABASE: test_main
+          MYSQL_DATABASE: main
           MYSQL_USER: user
           MYSQL_ROOT_HOST: "%"
           MYSQL_PASSWORD: password
@@ -43,6 +43,12 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: initialize db
+          command: |
+            . venv/bin/activate
+            python manage.py makemigrations
+            python manage.py migrate
 
       # run tests!
       # this example uses Django's built-in test-runner
