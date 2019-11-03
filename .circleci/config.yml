@@ -6,17 +6,17 @@ jobs:
         environment:
           DJANGO_SETTINGS_MODULE: config.settings.development
           DB_NAME: main
-          DB_USER: root
-          DB_PASSWORD: root
+          DB_USER: user
+          DB_PASSWORD: password
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
       - image: circleci/mysql:5.7
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
         environment:
           MYSQL_DATABASE: test_main
-          MYSQL_USER: root
+          MYSQL_USER: user
           MYSQL_ROOT_HOST: "%"
-          MYSQL_PASSWORD: root
+          MYSQL_PASSWORD: password
 
 
     working_directory: ~
