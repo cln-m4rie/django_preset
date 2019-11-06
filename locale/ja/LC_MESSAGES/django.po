@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-06 04:32+0900\n"
+"POT-Creation-Date: 2019-11-07 03:51+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: config/settings/base.py:121
+#: config/settings/base.py:122
 msgid "Japanese"
 msgstr "日本語"
 
-#: config/settings/base.py:122
+#: config/settings/base.py:123
 msgid "English"
 msgstr "英語"
+
+#: main/forms/signup.py:15
+msgid "First Name"
+msgstr "名前"
+
+#: main/forms/signup.py:20
+msgid "Last Name"
+msgstr "苗字"
+
+#: main/forms/signup.py:25
+msgid "User Name"
+msgstr "ユーザー名"
+
+#: main/forms/signup.py:30
+msgid "E-mail Address"
+msgstr "メールアドレス"
+
+#: main/forms/signup.py:36
+msgid "Password"
+msgstr "パスワード"
+
+#: main/forms/signup.py:64
+msgid "E-mail Address is already being used."
+msgstr "そのメールアドレスは既に使用されています。"
 
 #: main/models/user.py:41
 msgid "email address"
@@ -37,6 +61,12 @@ msgstr "名前"
 #: main/models/user.py:43
 msgid "last name"
 msgstr "苗字"
+
+#: main/models/user.py:44
+#, fuzzy
+#| msgid "User Name"
+msgid "user name"
+msgstr "ユーザー名"
 
 #: main/models/user.py:46
 msgid "staff status"
@@ -62,32 +92,16 @@ msgstr ""
 
 #: main/models/user.py:69
 msgid "user"
-msgstr ""
+msgstr "ユーザー"
 
 #: main/models/user.py:70
 msgid "users"
 msgstr ""
 
-#: main/templates/main/signup.html:10
+#: main/templates/main/registration/signup.html:14
 msgid "Register"
 msgstr "新規登録"
 
-#: main/templates/main/signup.html:16
-msgid "First Name"
-msgstr "名前"
-
-#: main/templates/main/signup.html:23
-msgid "Last Name"
-msgstr "苗字"
-
-#: main/templates/main/signup.html:31
-msgid "E-mail Address"
-msgstr "メールアドレス"
-
-#: main/templates/main/signup.html:39
-msgid "User Name"
-msgstr "ユーザー名"
-
-#: main/templates/main/signup.html:48
+#: main/templates/main/registration/signup.html:47
 msgid "Register Button"
 msgstr "登録"

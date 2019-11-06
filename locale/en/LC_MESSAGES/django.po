@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-06 04:32+0900\n"
+"POT-Creation-Date: 2019-11-07 03:51+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/settings/base.py:121
+#: config/settings/base.py:122
 msgid "Japanese"
 msgstr ""
 
-#: config/settings/base.py:122
+#: config/settings/base.py:123
 msgid "English"
+msgstr ""
+
+#: main/forms/signup.py:15
+msgid "First Name"
+msgstr ""
+
+#: main/forms/signup.py:20
+msgid "Last Name"
+msgstr ""
+
+#: main/forms/signup.py:25
+msgid "User Name"
+msgstr ""
+
+#: main/forms/signup.py:30
+msgid "E-mail Address"
+msgstr ""
+
+#: main/forms/signup.py:36
+msgid "Password"
+msgstr ""
+
+#: main/forms/signup.py:64
+msgid "E-mail Address is already being used."
 msgstr ""
 
 #: main/models/user.py:41
@@ -36,6 +60,10 @@ msgstr ""
 
 #: main/models/user.py:43
 msgid "last name"
+msgstr ""
+
+#: main/models/user.py:44
+msgid "user name"
 msgstr ""
 
 #: main/models/user.py:46
@@ -68,27 +96,11 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: main/templates/main/signup.html:10
+#: main/templates/main/registration/signup.html:14
 msgid "Register"
 msgstr "Register"
 
-#: main/templates/main/signup.html:16
-msgid "First Name"
-msgstr ""
-
-#: main/templates/main/signup.html:23
-msgid "Last Name"
-msgstr ""
-
-#: main/templates/main/signup.html:31
-msgid "E-mail Address"
-msgstr ""
-
-#: main/templates/main/signup.html:39
-msgid "User Name"
-msgstr ""
-
-#: main/templates/main/signup.html:48
+#: main/templates/main/registration/signup.html:47
 #, fuzzy
 #| msgid "Register"
 msgid "Register Button"

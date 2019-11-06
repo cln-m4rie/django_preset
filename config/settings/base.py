@@ -131,6 +131,10 @@ LOCALE_PATHS = (
 STATIC_URL = '/static/'
 
 
+LOGIN_URL = 'main:login'
+LOGIN_REDIRECT_URL = 'main:index'
+LOGOUT_REDIRECT_URL = 'main:index'
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

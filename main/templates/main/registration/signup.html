@@ -1,0 +1,57 @@
+{% extends 'main/base/layout.html' %}
+
+{% load i18n %}
+{% block content %}
+    <div class="my-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-12">
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">{{ form.non_field_errors.0 }}</div>
+                    {% endif %}
+
+                    <div class="card">
+                        <div class="card-header">{% trans 'Register' %}</div>
+                        <div class="card-body">
+                            <form
+                                    action="{% url 'main:signup' %}"
+                                    method="post"
+                            >
+                                {% csrf_token %}
+                                <div class="px-sm-5">
+                                    {% for item in form %}
+                                        <div class="form-group row">
+                                            <label for="{{ item.id_for_label }}"
+                                                   class="col-sm-3 col-form-label {% if item.errors %}text-danger{% endif %}">
+                                                {{ item.label }}{% if item.field.required %}*{% endif %}</label>
+                                            <div class="col-sm-9">
+                                                <input
+                                                        type="{{ item.field.widget.input_type }}"
+                                                        class="form-control {% if item.errors %}border-danger{% endif %}"
+                                                        name="{{ item.name }}"
+                                                        id="{{ item.id_for_label }}"
+                                                        value="{% firstof item.value %}">
+                                                {% if item.errors %}
+                                                    <small id="{{ item.id_for_label }}Help" class="text-danger">
+                                                        {{ item.errors.0 }}
+                                                    </small>
+                                                {% endif %}
+                                            </div>
+
+
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {% trans 'Register Button' %}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
