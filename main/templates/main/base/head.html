@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}"/>
+<meta name="keywords" content="service,{{ keywords }}"/>
+<meta property="og:title" content="{{ title }}"/>
+<meta property="og:description" content="{{ description }}"/>
+<meta property="og:image" content="{{ og_image }}"/>
+<meta property="og:type" content="{{ og_type }}"/>
+<meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="{{ twitter_site }}"/>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/common.css' %}" type="text/css">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>

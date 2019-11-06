@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load i18n %}
+
+<html lang="en">
+<head>
+    {% include 'main/base/head.html' %}
+    {% include 'main/base/header.html' %}
+    {% block css %}{% endblock %}
+</head>
+<body>
+{% block content %}{% endblock %}
+{% block script %}{% endblock %}
+</body>
+</html>
