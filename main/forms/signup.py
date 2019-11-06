@@ -4,10 +4,9 @@ from django.forms.widgets import TextInput, PasswordInput
 
 from main.models import User
 
-from .base import BootstrapFormMixin
 
 
-class SignupForm(BootstrapFormMixin, Form):
+class SignupForm(Form):
     name = CharField(
         max_length=256,
         required=True,
