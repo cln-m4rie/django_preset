@@ -1,3 +1,4 @@
+{% load i18n %}
 <nav class="navbar navbar-expand-lg navbar-light mb-5">
     <div class="container">
     <a class="navbar-brand" href="#">Django</a>
@@ -8,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url 'main:login' %}">{% trans 'Login' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="{% url 'main:signup' %}">{% trans 'Register' %}</a>
             </li>
         </ul>
 
