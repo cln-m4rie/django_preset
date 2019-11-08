@@ -1,17 +1,6 @@
 version: "3"
 
 services:
-  nginx:
-    build: ./nginx
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
-      - ./logs/nginx:/var/log/nginx
-      - ./static:/var/www/html/static
-    ports:
-      - "8000:8000"
-    depends_on:
-      - app
   app:
     build:
       context: .
@@ -22,7 +11,9 @@ services:
     volumes:
       - .:/var/www/html
     ports:
-      - "3031:3031"
+      - "8000:8000"
+    environment:
+      - PORT=8000
     depends_on:
       - db
   db:

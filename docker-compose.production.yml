@@ -1,32 +1,22 @@
 version: "3"
 
 services:
-  nginx:
-    build: ./nginx
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
-      - ./logs/nginx:/var/log/nginx
-      - ./static:/var/www/html/static
-    ports:
-      - "8000:8000"
-    depends_on:
-      - app
   app:
     build:
       context: .
       dockerfile: Dockerfile
     env_file:
       - .env
-    command: sh -c "./wait-for-it.sh db:3306; python manage.py migrate --settings=config.settings.production; uwsgi --ini /var/www/html/uwsgi.ini"
+    command: sh -c "python manage.py migrate --settings=config.settings.production; uwsgi --ini /var/www/html/uwsgi.ini"
     environment:
-      DJANGO_SETTINGS_MODULE: config.settings.production
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD
-      DB_HOST: ${DB_HOST}
-      DB_PORT: 3306
+      - DJANGO_SETTINGS_MODULE=config.settings.production
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=3306
+      - PORT=8000
     volumes:
       - .:/var/www/html
     ports:
-      - "3031:3031"
+      - "8000:8000"
