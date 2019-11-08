@@ -1,21 +1,48 @@
+{% load common %}
+{% if not title %}
+    {% set title = 'Example Title' %}
+{% endif %}
+{% if not description %}
+    {% set description = 'Example Description' %}
+{% endif %}
+{% if not keywords %}
+    {% set keywords = 'keywords' %}
+{% endif %}
+{% if not og_image %}
+    {% set og_image = '' %}
+{% endif %}
+{% if request.path == '/' %}
+    {% set og_type = 'website' %}
+{% else %}
+    {% set og_type = 'article' %}
+{% endif %}
+{% if not site_name %}
+    {% set site_name = 'Example Site' %}
+{% endif %}
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}"/>
 <meta name="keywords" content="service,{{ keywords }}"/>
+<meta property="og:site_name" content="{{ site_name }}">
 <meta property="og:title" content="{{ title }}"/>
 <meta property="og:description" content="{{ description }}"/>
-<meta property="og:image" content="{{ og_image }}"/>
+{% if og_image %}
+    <meta property="og:image" content="{{ og_image }}"/>
+{% endif %}
 <meta property="og:type" content="{{ og_type }}"/>
 <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="{{ twitter_site }}"/>
-
+{% if twitter_site %}
+    <meta name="twitter:site" content="{{ twitter_site }}"/>
+{% endif %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/common.css' %}" type="text/css">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
 
 <script src="{% static 'assets/js/jquery.min.js' %}"></script>
 <script src="{% static 'assets/js/popper.min.js' %}"></script>
