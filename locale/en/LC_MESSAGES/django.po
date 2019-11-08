@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-08 05:15+0900\n"
+"POT-Creation-Date: 2019-11-09 05:04+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,6 +97,8 @@ msgid "users"
 msgstr ""
 
 #: main/templates/main/base/header.html:12
+#: main/templates/main/registration/login.html:13
+#: main/templates/main/registration/login.html:39
 msgid "Login"
 msgstr ""
 
@@ -105,7 +107,11 @@ msgstr ""
 msgid "Register"
 msgstr "Register"
 
-#: main/templates/main/registration/signup.html:47
+#: main/templates/main/registration/login.html:9
+msgid "Your email or password didn't match."
+msgstr ""
+
+#: main/templates/main/registration/signup.html:45
 #, fuzzy
 #| msgid "Register"
 msgid "Register Button"

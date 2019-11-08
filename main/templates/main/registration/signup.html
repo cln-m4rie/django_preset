@@ -18,7 +18,7 @@
                                     method="post"
                             >
                                 {% csrf_token %}
-                                <div class="px-sm-5">
+                                <div class="px-sm-5 pb-5">
                                     {% for item in form %}
                                         <div class="form-group row">
                                             <label for="{{ item.id_for_label }}"
@@ -37,12 +37,10 @@
                                                     </small>
                                                 {% endif %}
                                             </div>
-
-
                                         </div>
                                     {% endfor %}
                                 </div>
-                                <div class="col-md-6 offset-md-4">
+                                <div class="text-center">
                                     <button type="submit" class="btn btn-primary">
                                         {% trans 'Register Button' %}
                                     </button>

@@ -1,4 +1,48 @@
 {% extends 'main/base/layout.html' %}
+{% load i18n %}
+
 {% block content %}
-    <h1>login</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-12">
+                {% if form.errors %}
+                    <p class="alert alert-danger text-danger">{% trans "Your email or password didn't match." %}</p>
+                {% endif %}
+
+                <div class="card">
+                    <div class="card-header">{% trans 'Login' %}</div>
+                    <div class="card-body">
+                        <form
+                                action="{% url 'main:login' %}"
+                                method="post"
+                        >
+                            {% csrf_token %}
+                            <div class="px-sm-5 pb-5">
+                                {% for item in form %}
+                                    <div class="form-group row">
+                                        <label for="{{ item.id_for_label }}"
+                                               class="col-sm-3 col-form-label {% if item.errors %}text-danger{% endif %}">
+                                            {{ item.label }}{% if item.field.required %}*{% endif %}</label>
+                                        <div class="col-sm-9">
+                                            <input
+                                                    type="{{ item.field.widget.input_type }}"
+                                                    class="form-control"
+                                                    name="{{ item.name }}"
+                                                    id="{{ item.id_for_label }}"
+                                                    value="{% firstof item.value %}">
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    {% trans 'Login' %}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
