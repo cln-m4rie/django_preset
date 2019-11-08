@@ -24,3 +24,7 @@ ENV LANG=ja_JP.UTF-8
 ENV LANGUAGE=ja_JP.UTF-8
 
 ADD . /var/www/html/
+RUN rm -rf /var/www/html/mysql
+RUN rm -rf /var/www/html/nginx
+
+CMD ["uwsgi", "--ini", "/var/www/html/uwsgi.ini"]
