@@ -16,3 +16,8 @@ class SignupView(FormView):
             return super().form_invalid(form)
         login(self.request, user)
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        response.status_code = 400
+        return response

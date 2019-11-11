@@ -6,7 +6,6 @@ from main.models import User
 from django.utils.translation import ugettext_lazy as _
 
 
-
 class SignupForm(Form):
     first_name = CharField(
         max_length=255,
