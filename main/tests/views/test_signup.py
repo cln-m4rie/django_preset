@@ -1,9 +1,7 @@
-from django.test import TestCase, Client
-from main.models.user import User
+from django.test import TestCase
+from django.urls import reverse
+
 from main.forms.signup import SignupForm
-from django.urls import reverse, resolve
-from main.views import SignupView
-import json
 
 
 class TestSignup(TestCase):
