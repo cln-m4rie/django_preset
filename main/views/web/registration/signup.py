@@ -14,6 +14,7 @@ class SignupView(FormView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('main:index')
+        return super(SignupView, self).get(request)
 
     def form_valid(self, form):
         user = form.create_user()
