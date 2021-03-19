@@ -8,7 +8,7 @@ flake8 = "*"
 autopep8 = "*"
 
 [packages]
-django = "==2.2.13"
+django = "==2.2.18"
 uwsgi = "*"
 django-admin-tools = "*"
 mysqlclient = "*"
